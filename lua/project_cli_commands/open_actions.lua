@@ -29,7 +29,7 @@ M.execute_script_with_params = function(prompt_bufnr, with_params, direction, si
 
   -- Replace `${currentBuffer}` with the current buffer's path
   cmdLine = cmdLine:gsub("%${currentBuffer}", current_buffer_path)
-  cmdLine = cmdLine = cmdLine:gsub("%${currentBufferWithLine}", current_buffer_path_with_line)
+  cmdLine = cmdLine:gsub("%${currentBufferWithLine}", current_buffer_path_with_line)
 
   local termParams = {
     id            = id,
