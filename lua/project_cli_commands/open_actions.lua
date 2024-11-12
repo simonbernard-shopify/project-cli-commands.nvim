@@ -23,7 +23,7 @@ M.execute_script_with_params = function(prompt_bufnr, with_params, direction, si
   local id = next_id()
   -- Get the current buffer's full path
   local current_buffer_path = vim.fn.expand('%:.')
-  local current_buffer_path_with_line = vim.fn.join([expand('%'),  line(".")], ':')
+  local current_buffer_path_with_line = vim.fn.expand('%:p') .. ':' .. vim.fn.line('.')
 
   local cmdLine = selection.value .. params
 
