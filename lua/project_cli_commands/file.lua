@@ -18,7 +18,8 @@ end
 
 
 M.openConfigFile = function()
-  local filePath = '~/.config/nvim/commands.json'
+  local homePath = os.getenv("HOME")
+  local filePath = home .. '.config/nvim/commands.json'
 
   local file = io.open(filePath, "rb")
   if file == nil then
