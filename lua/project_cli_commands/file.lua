@@ -18,23 +18,23 @@ end
 
 
 M.openConfigFile = function()
-  local filePath = vim.fn.getcwd() .. '/.nvim/config.json'
+  local filePath = '~/.config/nvim/commands.json'
 
   local file = io.open(filePath, "rb")
   if file == nil then
     local choice
     repeat
-      choice = vim.fn.input(".nvim/config.json isn't found do you want to create it? (y/n): ")
+      choice = vim.fn.input("commands.json isn't found do you want to create it? (y/n): ")
     until choice == 'y' or choice == 'n'
 
     if choice == 'y' then
-      if createDirIfNotExists(vim.fn.getcwd() .. '/.nvim') == false then
-        error("Can't create .nvim directory.")
+      if createDirIfNotExists('~/.config/nvim') == false then
+        error("Can't create nvim directory.")
       end
       -- Create a new file and write an empty table
       local new_file = io.open(filePath, "w")
       if new_file == nil then
-        error(".nvim/config.json could not be created.")
+        error("commands.json could not be created.")
       end
 
       new_file:write("{\n  \"commands\": {\n    \"ls:la\": \"ls -la\"\n   }\n}\n")
@@ -66,7 +66,7 @@ end
 M.getEnvTable = function(filepath)
   local envTable
   if filepath then
-    local envFilePath = vim.fn.getcwd() .. '/.nvim/' .. filepath
+    local envFilePath = filepath
     envTable = M.readEnvFromFile(envFilePath)
   end
   return envTable
